@@ -1,5 +1,4 @@
-# Logistic regression written from scratch with numpy (Task 3.1 - 3.3)
-# X is expected to already have the column of ones (x0 = 1) in front.
+# Logistic regression 
 
 import numpy as np
 

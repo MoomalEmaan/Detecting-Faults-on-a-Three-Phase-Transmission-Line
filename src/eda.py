@@ -1,5 +1,4 @@
-# Task 2 - exploratory plots on the RAW (not standardised) data
-# run from the project folder:  python src/eda.py   (run prepare.py first)
+# Task 2 - Exploratory plots on the RAW (not standardised) data
 
 from pathlib import Path
 import numpy as np
@@ -17,11 +16,9 @@ faulty = df[df["fault"] == 1]
 NO_FAULT_COLOUR = "tab:blue"
 FAULT_COLOUR = "tab:orange"
 
-
 # 2.1 currents over time for the first 2000 rows, fault regions shaded
 first = df.iloc[:2000]
 rows = np.arange(len(first))
-
 fig, ax = plt.subplots(figsize=(12, 5))
 ax.plot(rows, first["Ia"], label="Ia", linewidth=1)
 ax.plot(rows, first["Ib"], label="Ib", linewidth=1)
@@ -40,10 +37,8 @@ fig.savefig("results/figures/2_1_currents_vs_time.png", dpi=150)
 plt.close(fig)
 print("Saved results/figures/2_1_currents_vs_time.png")
 
-
 # 2.2 scatter of Ia vs Ib coloured by fault
 fig, ax = plt.subplots(figsize=(7, 6))
-# small dots + some transparency because there are 12000 points
 ax.scatter(normal["Ia"], normal["Ib"], s=4, alpha=0.4, color=NO_FAULT_COLOUR, label="no fault (0)")
 ax.scatter(faulty["Ia"], faulty["Ib"], s=4, alpha=0.4, color=FAULT_COLOUR, label="fault (1)")
 ax.set_xlabel("Ia (A)")
@@ -55,11 +50,8 @@ fig.savefig("results/figures/2_2_scatter_Ia_Ib.png", dpi=150)
 plt.close(fig)
 print("Saved results/figures/2_2_scatter_Ia_Ib.png")
 
-
 # 2.3 histogram of Ia for fault and no-fault rows on the same axes
-# use the same bins for both so the bars line up
 bins = np.linspace(df["Ia"].min(), df["Ia"].max(), 80)
-
 fig, ax = plt.subplots(figsize=(9, 5))
 ax.hist(normal["Ia"], bins=bins, alpha=0.6, color=NO_FAULT_COLOUR, label="no fault (0)")
 ax.hist(faulty["Ia"], bins=bins, alpha=0.6, color=FAULT_COLOUR, label="fault (1)")
