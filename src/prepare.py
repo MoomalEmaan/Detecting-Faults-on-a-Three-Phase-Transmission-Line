@@ -6,7 +6,7 @@ import pandas as pd
 
 from load_data import load_raw
 
-Path("results").mkdir(exist_ok=True)
+Path("results/tables").mkdir(parents=True, exist_ok=True)
 
 # 1.1 Look at the raw file 
 raw = load_raw()
@@ -107,5 +107,5 @@ table1 = pd.DataFrame({
 
 print("\nTable 1 - Data preparation")
 print(table1.to_string(index=False))
-table1.to_csv("results/table1_data_prep.csv", index=False)
-print("Saved results/table1_data_prep.csv")
+table1.to_csv("results/tables/table1_data_prep.csv", index=False)
+print("Saved results/tables/table1_data_prep.csv")
